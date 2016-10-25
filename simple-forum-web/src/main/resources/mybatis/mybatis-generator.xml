@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE generatorConfiguration
+        PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"
+        "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
+
+<generatorConfiguration>
+    <!--<classPathEntry-->
+    <!--location="/Users/xiajiang/.m2/repository/mysql/mysql-connector-java/5.1.6/mysql-connector-java-5.1.6.jar"/>-->
+    <classPathEntry
+            location="C:/Users/zuhai.jiang/.m2/repository/mysql/mysql-connector-java/5.1.6/mysql-connector-java-5.1.6.jar"/>
+
+    <!--<context id="MysqlTables" targetRuntime="MyBatis3" ="hierarchical">-->
+    <context id="MysqlTables" targetRuntime="MyBatis3">
+        <!--<jdbcConnection driverClass="com.mysql.jdbc.Driver"-->
+        <!--connectionURL="jdbc:mysql://10.1.77.69:3306/DpDim?autoReconnect=true&amp;autoReconnectForPools=true&amp;useUnicode=true&amp;characterEncoding=utf-8"-->
+        <!--userId="dpdim" password="dp!@YpGnCIU0W">-->
+        <!--</jdbcConnection>-->
+
+        <!--<jdbcConnection driverClass="com.mysql.jdbc.Driver"-->
+                        <!--connectionURL="jdbc:mysql://10.66.7.32:3306/DianPingDW_beta?autoReconnect=true&amp;autoReconnectForPools=true&amp;useUnicode=true&amp;characterEncoding=utf-8"-->
+                        <!--userId="dianpingdw_beta" password="dp!@uUEMQV6fd">-->
+        <!--</jdbcConnection>-->
+
+        <jdbcConnection driverClass="com.mysql.jdbc.Driver"
+                                         connectionURL="jdbc:mysql://127.0.0.1:3306/simple_forum?autoReconnect=true&amp;autoReconnectForPools=true&amp;useUnicode=true&amp;characterEncoding=utf-8"
+                                         userId="root" password="root">
+    </jdbcConnection>
+
+
+        <javaTypeResolver>
+            <property name="forceBigDecimals" value="false"/>
+        </javaTypeResolver>
+
+        <javaModelGenerator targetPackage="job.test.forum.models" targetProject="src/main/java">
+            <property name="enableSubPackages" value="true"/>
+            <property name="trimStrings" value="true"/>
+        </javaModelGenerator>
+
+        <sqlMapGenerator targetPackage="mappers"  targetProject="src/main/resources">
+            <property name="enableSubPackages" value="true"/>
+        </sqlMapGenerator>
+
+        <javaClientGenerator type="XMLMAPPER" targetPackage="job.test.forum.mappers"
+                             targetProject="src/main/java">
+            <property name="enableSubPackages" value="true"/>
+        </javaClientGenerator>
+
+        <table tableName="user" domainObjectName="User">
+            <generatedKey column="id" sqlStatement="MySql" identity="true"/>
+        </table>
+
+        <table tableName="topic" domainObjectName="Topic">
+            <generatedKey column="id" sqlStatement="MySql" identity="true"/>
+        </table>
+
+        <table tableName="post" domainObjectName="Post">
+            <generatedKey column="id" sqlStatement="MySql" identity="true"/>
+        </table>
+
+    </context>
+</generatorConfiguration>

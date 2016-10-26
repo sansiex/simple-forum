@@ -22,9 +22,14 @@ public class UserController extends BaseController {
     @Autowired
     private UserService userService;
 
+    /**
+     * create new user
+     * @param name
+     * @return
+     */
     @RequestMapping(value = "/create", method = RequestMethod.POST)
     @ResponseBody
-    public Response<User> createUser(String name){
+    public Response<User> create(String name){
         try {
             User user = userService.create(name);
             if (user != null) {
@@ -38,9 +43,14 @@ public class UserController extends BaseController {
         }
     }
 
-    @RequestMapping(value = "/get", method = RequestMethod.POST)
+    /**
+     * get user info by id
+     * @param id
+     * @return
+     */
+    @RequestMapping(value = "/get", method = RequestMethod.GET)
     @ResponseBody
-    public Response<User> getUser(int id){
+    public Response<User> get(int id){
         try {
             User user = userService.get(id);
             if (user != null) {

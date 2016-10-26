@@ -2,6 +2,7 @@ package job.test.forum.services;
 
 import com.google.common.base.Strings;
 import job.test.forum.dto.Page;
+import job.test.forum.dto.TopicInfoDTO;
 import job.test.forum.mappers.TopicMapper;
 import job.test.forum.models.Topic;
 import job.test.forum.models.TopicExample;
@@ -43,6 +44,11 @@ public class TopicService {
         logger.info("Get by id:{}", id);
         Topic topic = topicMapper.selectByPrimaryKey(id);
         return topic;
+    }
+
+    public TopicInfoDTO getTopicInfo(int id){
+        logger.info("Get topic info by id:{}", id);
+        return topicMapper.getTopicInfo(id);
     }
 
     public Topic update(int id, String title, String content){

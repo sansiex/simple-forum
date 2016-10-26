@@ -9,6 +9,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.Date;
 import java.util.List;
@@ -26,6 +27,7 @@ public class PostService {
     @Autowired
     private PostMapper postMapper;
 
+    @Transactional
     public Post create(int userId, int topicId, String content){
         checkArgument(!Strings.isNullOrEmpty(content), "Content must not be null or empty");
         logger.info("Create post with creatorId:{}, topicId:{}, content:{}", new Object[]{userId, topicId, content});
@@ -38,6 +40,7 @@ public class PostService {
         return post;
     }
 
+    @Transactional
     public Page<Post> listPostsOnGivenTopic(int topicId, int start, int pageSize){
         checkArgument(start>-1, "Start [] must > -1", start);
         checkArgument(pageSize>0, "Page size [] must > 0", pageSize);

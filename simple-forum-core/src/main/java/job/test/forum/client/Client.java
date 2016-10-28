@@ -109,10 +109,10 @@ public class Client {
     }
 
     private static void getTopicDetail(String[] args){
-        if (!checkArguments(args, 3)) {
+        if (!checkArguments(args, 2)) {
             return;
         }
-        int topicId = Integer.parseInt(args[2]);
+        int topicId = Integer.parseInt(args[1]);
         TopicDetailDTO dto = getTopicService().getTopicDetail(topicId);
         System.out.println("主题："+dto.getTitle());
         System.out.println("内容："+dto.getContent());

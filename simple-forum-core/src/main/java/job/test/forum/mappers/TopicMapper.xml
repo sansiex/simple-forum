@@ -16,8 +16,8 @@
     <id column="id" property="id" jdbcType="INTEGER" />
     <result column="title" property="title" jdbcType="VARCHAR" />
     <result column="content" property="content" jdbcType="LONGVARCHAR" />
-    <result column="creatorId" property="creatorid" jdbcType="INTEGER" />
-    <result column="creatorName" property="createName" jdbcType="VARCHAR" />
+    <result column="creatorId" property="creatorId" jdbcType="INTEGER" />
+    <result column="creatorName" property="creatorName" jdbcType="VARCHAR" />
     <result column="createtime" property="createtime" jdbcType="TIMESTAMP" />
   </resultMap>
   <resultMap id="BaseResultMap" type="job.test.forum.models.Topic" >
@@ -177,7 +177,7 @@
     from topic
     where id = #{id,jdbcType=INTEGER}
   </select>
-  <select id="getTopicDetail" resultMap="TopicInfoDTO" parameterType="java.lang.Integer" >
+  <select id="getTopicDetail" resultMap="TopicDetailDTO" parameterType="java.lang.Integer" >
     SELECT
       t.id
       ,t.title

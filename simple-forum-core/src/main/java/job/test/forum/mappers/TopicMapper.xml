@@ -199,20 +199,21 @@
       ,t.createtime
       ,pc.name as lastPosterName
       ,p1.lastPostTime
-      ,P1.postCnt
+      ,p1.postCnt
     FROM topic t
     left join user c on t.creatorId = c.id
     left join (
       select
           topicId
-          ,max(createtime) as lastPostTime
+          ,max(id) as lastPostId
+					,max(createtime) as lastPostTime
           ,count(1) as postCnt
       from post
       group by topicId
     ) p1
     on t.id=p1.topicId
     left join post p2
-    on p1.lastPostTime = p2.createtime
+    on p1.lastPostId = p2.id
     left join user pc
         on p2.creatorId = pc.id
   </select>

@@ -9,10 +9,10 @@ import java.util.Date;
 /**
  * Created by zuhai.jiang on 2016/10/26.
  */
-public class PostDTO implements Serializable{
+public class PostInfoDTO implements Serializable{
     private int id;
-    private String content;
-    private User creator;
+    private int creatorId;
+    private String creatorName;
     private Date createtime;
 
     public int getId() {
@@ -23,20 +23,20 @@ public class PostDTO implements Serializable{
         this.id = id;
     }
 
-    public String getContent() {
-        return content;
+    public int getCreatorId() {
+        return creatorId;
     }
 
-    public void setContent(String content) {
-        this.content = content;
+    public void setCreatorId(int creatorId) {
+        this.creatorId = creatorId;
     }
 
-    public User getCreator() {
-        return creator;
+    public String getCreatorName() {
+        return creatorName;
     }
 
-    public void setCreator(User creator) {
-        this.creator = creator;
+    public void setCreatorName(String creatorName) {
+        this.creatorName = creatorName;
     }
 
     public Date getCreatetime() {

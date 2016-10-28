@@ -14,7 +14,7 @@ public class TopicInfoDTO implements Serializable {
     private static final long serialVersionUID = -273029967138132315L;
     private int id;
     private String title;
-    private String content;
+//    private String content;
     private int creatorId;
     private String creatorName;
     private Date createtime;
@@ -37,14 +37,6 @@ public class TopicInfoDTO implements Serializable {
 
     public void setTitle(String title) {
         this.title = title;
-    }
-
-    public String getContent() {
-        return content;
-    }
-
-    public void setContent(String content) {
-        this.content = content;
     }
 
     public int getCreatorId() {

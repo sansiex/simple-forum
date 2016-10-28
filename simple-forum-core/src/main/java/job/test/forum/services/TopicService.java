@@ -1,8 +1,8 @@
 package job.test.forum.services;
 
 import com.google.common.base.Strings;
-import job.test.forum.dto.Page;
-import job.test.forum.dto.TopicInfoDTO;
+import job.test.forum.dto.*;
+import job.test.forum.mappers.PostMapper;
 import job.test.forum.mappers.TopicMapper;
 import job.test.forum.models.Topic;
 import job.test.forum.models.TopicExample;
@@ -27,6 +27,9 @@ public class TopicService {
     @Autowired
     private TopicMapper topicMapper;
 
+    @Autowired
+    private PostMapper postMapper;
+
     public Topic create(int userId, String title, String content){
         checkArgument(!Strings.isNullOrEmpty(title), "Title must not be null or empty");
         checkArgument(!Strings.isNullOrEmpty(content), "Content must not be null or empty");
@@ -46,9 +49,21 @@ public class TopicService {
         return topic;
     }
 
-    public TopicInfoDTO getTopicInfo(int id){
-        logger.info("Get topic info by id:{}", id);
-        return topicMapper.getTopicInfo(id);
+    /**
+     * get topic detail of given topic id
+     * @param id
+     * @return
+     */
+    public TopicDetailDTO getTopicDetail(int id){
+        TopicDetailDTO detail = topicMapper.getTopicDetail(id);
+        List<PostDetailDTO> posts = postMapper.listPostDetails(id);
+        detail.setPostList(posts);
+        return detail;
+    }
+
+    public List<TopicInfoDTO> listTopicInfo(){
+        logger.info("list topic info");
+        return topicMapper.listTopicInfo();
     }
 
     public Topic update(int id, String title, String content){
